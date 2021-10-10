@@ -1,0 +1,97 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "[P1] compile",
+            "type": "shell",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/src/threads"
+            }
+        },
+        {
+            "label": "[P2] compile",
+            "type": "shell",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/src/userprog"
+            }
+        },
+        {
+            "label": "[P1] Run Test in GDB mode",
+            "type": "shell",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": ".",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": ".",
+                        "endsPattern": ".",
+                    }
+                }
+            ],
+            "dependsOn": [
+                "[P1] compile"
+            ],
+            "command": "pintos -v -k -T 60 --bochs --gdb  -- -q  run ${input:test_name}",
+            "options": {
+                "cwd": "${workspaceFolder}/src/threads/build"
+            }
+        },
+        {
+            "label": "[P2] Run Test in GDB mode",
+            "type": "shell",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": ".",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": ".",
+                        "endsPattern": ".",
+                    }
+                }
+            ],
+            "dependsOn": [
+                "[P2] compile"
+            ],
+            "command": "pintos -v -k -T 60 --qemu --gdb --filesys-size=2 -p tests/userprog/${input:prog_name} -a ${input:prog_name} -- -q  -f run '${input:args}'",
+            "options": {
+                "cwd": "${workspaceFolder}/src/userprog/build"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "test_name",
+            "type": "promptString",
+            "description": "Name of the Test to Debug"
+        },
+        {
+            "id": "prog_name",
+            "type": "promptString",
+            "description": "Name of the Program to load for debugging (e.g., args-multiple)",
+            "default": ""
+        },
+        {
+            "id": "args",
+            "type": "promptString",
+            "description": "Task passed to Pintos (e.g., args-multiple some arguments for you!)",
+        }
+    ]
+}
