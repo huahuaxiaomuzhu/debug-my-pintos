@@ -10,6 +10,7 @@
 
 - 首先你得有一个能运行pintos的环境(废话)
 - 安装vscode，及C/C++扩展
+- 你的bochs支持**nogui**，如果你的bochs不支持nogui，你可以重复教程中的编译安装bochs部分，在执行./configure的时候加上--with-nogui
 
 **如果你的pintos运行在我的docker内，很遗憾本仓库暂时无法兼容docker内环境。**
 
