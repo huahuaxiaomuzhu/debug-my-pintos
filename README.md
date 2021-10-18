@@ -31,7 +31,7 @@ pintos -v -k -T 60 --bochs  --filesys-size=2 -p tests/userprog/args-none -a args
 ```
 
 你需要注意的是"-a","-p","run"之后跟随的内容(本例中是"args-none","args-none","args-none")，在弹出的输入框内依次输入这三个，其余操作同project1。
-
+想要project3的内容请找我击剑或者自己照着前面的推理一下，懒得单独commit了。
 
 
 ## 推荐的使用方法
