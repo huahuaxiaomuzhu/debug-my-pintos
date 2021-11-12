@@ -70,7 +70,7 @@
             "dependsOn": [
                 "[P2] compile"
             ],
-            "command": "pintos -v -k -T 60 --qemu --gdb --filesys-size=2 -p tests/userprog/${input:prog_name} -a ${input:prog_name} -- -q  -f run '${input:args}'",
+            "command": "pintos -v -k -T 60 --bochs --gdb --filesys-size=2 -p tests/userprog/${input:prog_name} -a ${input:prog_name} -- -q  -f run '${input:args}'",
             "options": {
                 "cwd": "${workspaceFolder}/src/userprog/build"
             }
