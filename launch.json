@@ -41,7 +41,7 @@
             "preLaunchTask": "[P2] Run Test in GDB mode",
             "miDebuggerServerAddress": "localhost:1234",
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/src",
+            "cwd": "${workspaceFolder}/src/userprog/build",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
